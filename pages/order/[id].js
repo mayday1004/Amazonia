@@ -87,6 +87,8 @@ function OrderPage() {
         const { data } = await axios.put(`/api/orders/${order._id}/pay`, details);
         setPaySuccess(data);
         toast.success('Order is paid successgully');
+        console.log(data.order.orderItems);
+        await axios.patch('/api/products', data.order.orderItems);
       } catch (err) {
         failPayResult(err.response?.data?.message ? err.response.data.message : err.message);
         toast.error(err.response?.data?.message ? err.response.data.message : err.message);

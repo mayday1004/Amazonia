@@ -113,6 +113,7 @@ const StoreProvider = ({ children }) => {
           cartItems: [],
         })
       );
+
       router.push(`/order/${data._id}`);
     } catch (err) {
       setLoading(false);
